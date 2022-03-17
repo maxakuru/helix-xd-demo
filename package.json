@@ -1,5 +1,5 @@
 {
-  "name": "consonant",
+  "name": "demo",
   "version": "1.0.0",
   "description": "The Consonant design system built on Helix. Learn more - https://consonant.adobe.com",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adobecom/consonant.git"
+    "url": "git+https://github.com/ryanmparrish/demo.git"
   },
   "author": "",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/adobecom/consonant/issues"
+    "url": "https://github.com/ryanmparrish/demo/issues"
   },
-  "homepage": "https://github.com/adobecom/consonant#readme",
+  "homepage": "https://github.com/ryanmparrish/demo#readme",
   "devDependencies": {
     "@babel/core": "7.15.5",
     "@babel/eslint-parser": "7.15.4",
