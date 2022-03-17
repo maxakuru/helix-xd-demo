@@ -63,7 +63,7 @@ function decorateText(el, size) {
     }
   }
   if (size === 'l') {
-    heading.classList.add('heading-XL');
+    heading.classList.add('heading-L');
     heading.nextElementSibling.classList.add('body-M');
     if (heading.previousElementSibling) {
       heading.previousElementSibling.classList.add('detail-L');
