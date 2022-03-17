@@ -21,6 +21,32 @@
     text-align: center;
 }
 
+.marquee.large {
+  display: block;
+}
+.marquee.large .foreground {
+  margin-top: var(--spacing-m);
+}
+.marquee.large .background picture {
+  position: relative;
+}
+/* desktop */
+@media only screen and (min-width: 1400px) {
+  .marquee.large .background picture {
+    position: absolute;
+  }
+  .marquee.large {
+    display: flex;
+  }
+  .marquee.large .foreground {
+    margin-top: 0;
+  }
+  .marquee.large .foreground.container {
+    min-width: 1200px;
+  }
+}
+
+
 .marquee .background picture {
     display: block;
     position: absolute;
@@ -82,7 +108,7 @@
     width: 100%;
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 900px) {
     .marquee .foreground {
         display: flex;
     }

@@ -119,6 +119,18 @@ body {
     margin: 0;
 }
 
+/* Links */
+a,
+a:visited {
+  color: rgb(20, 115, 230);
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+
 /* Buttons */
 .con-button {
     color: #FFF;
@@ -131,6 +143,10 @@ body {
     text-decoration: none;
     font-size: 14px;
     font-style: normal;
+}
+.con-button:hover,
+.con-button:active {
+  text-decoration: none;
 }
 
 .light .con-button {
@@ -145,7 +161,7 @@ body {
 
 .con-button.outline {
   color: #000;
-  background: #fff;
+  /*background: #fff;*/
   border: 2px solid rgb(0, 0, 0);
 }
 

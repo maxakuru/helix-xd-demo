@@ -98,7 +98,7 @@ export default function init(block)  {
           image.classList.add('image');
         }
         decorateText(text, size);
-        decorateIcons(text);
+        // decorateIcons(text);
         decorateButtons(text);
     });
 }
