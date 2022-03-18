@@ -30,22 +30,7 @@
 .marquee.large .background picture {
   position: relative;
 }
-/* desktop */
-@media only screen and (min-width: 1400px) {
-  .marquee.large .background picture {
-    position: absolute;
-  }
-  .marquee.large {
-    display: flex;
-    min-height: 700px;
-  }
-  .marquee.large .foreground {
-    margin-top: 0;
-  }
-  .marquee.large .foreground.container {
-    min-width: 1200px;
-  }
-}
+
 
 
 .marquee .background picture {
@@ -108,9 +93,22 @@
     display: block;
     width: 100%;
 }
-
-@media screen and (min-width: 900px) {
-    .marquee .foreground {
-        display: flex;
-    }
+/* desktop */
+@media only screen and (min-width: 1400px) {
+  .marquee .foreground {
+    display: flex;
+  }
+  .marquee.large .background picture {
+    position: absolute;
+  }
+  .marquee.large {
+    display: flex;
+    min-height: 700px;
+  }
+  .marquee.large .foreground {
+    margin-top: 0;
+  }
+  .marquee.large .foreground.container {
+    min-width: 1200px;
+  }
 }
