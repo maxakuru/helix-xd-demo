@@ -464,16 +464,21 @@ async function loadEager() {
 async function loadLazy(doc) {
   const header = doc.querySelector('header > div');
   const main = document.querySelector('main');
-  // load gnav
-  const gnavPath = getMetadata('gnav') || `/nav/gnav`;
-  header.setAttribute('data-block-name', 'gnav');
-  header.setAttribute('data-gnav-source', gnavPath);
 
   if (main) {
     loadBlocks(main);
 
     decorateBlock(header);
+    const gnavPath = getMetadata('gnav') || `/blocks/gnav`;
+    header.setAttribute('data-block-name', 'gnav');
+    header.setAttribute('data-gnav-source', gnavPath);
     loadBlock(header);
+
+    /* load footer */
+    const footer = document.querySelector('footer');
+    footer.setAttribute('data-block-name', 'footer');
+    footer.setAttribute('data-footer-source', `/footer`);
+    loadBlock(footer);
 
     loadStyle('/fonts/fonts.css');
     addFavIcon(`${window.hlx.codeBasePath}/img/icon.svg`);
