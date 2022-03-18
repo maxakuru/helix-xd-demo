@@ -464,6 +464,11 @@ async function loadEager() {
 async function loadLazy(doc) {
   const header = doc.querySelector('header > div');
   const main = document.querySelector('main');
+  // load gnav
+  const gnavPath = getMetadata('gnav') || `/nav/gnav`;
+  header.setAttribute('data-block-name', 'gnav');
+  header.setAttribute('data-gnav-source', gnavPath);
+
   if (main) {
     loadBlocks(main);
 

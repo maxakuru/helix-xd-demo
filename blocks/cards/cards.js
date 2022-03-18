@@ -41,7 +41,6 @@ function decorateHeadline(el) {
 }
 function decorateText(el) {
   const headings = el.querySelectorAll('h1, h2, h3, h4, h5, h6');
-  console.log({headings});
   headings.forEach( (heading) => {
     heading.classList.add('heading-XS');
     if (heading.nextElementSibling) {
