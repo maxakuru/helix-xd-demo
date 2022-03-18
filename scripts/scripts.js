@@ -81,6 +81,94 @@ export function loadStyle(href, callback) {
   }
 }
 
+const envs = {
+  stage: {
+    ims: 'stg1',
+    adminconsole: 'stage.adminconsole.adobe.com',
+    account: 'stage.account.adobe.com',
+    target: false,
+  },
+  prod: {
+    ims: 'prod',
+    adminconsole: 'adminconsole.adobe.com',
+    account: 'account.adobe.com',
+    target: true,
+  },
+};
+
+/**
+ * Get the current Helix environment
+ * @returns {Object} the env object
+ */
+export function getEnv() {
+  let envName = sessionStorage.getItem('helix-env');
+  if (!envName) envName = 'prod';
+  const env = envs[envName];
+  if (env) {
+    env.name = envName;
+  }
+  return env;
+}
+
+export function makeLinkRelative(href) {
+  const url = new URL(href);
+  const host = url.hostname;
+  if (host.endsWith('.page') || host.endsWith('.live') || host === 'gnav.adobe.com') return (`${url.pathname}${url.search}${url.hash}`);
+  return (href);
+}
+
+const LANG = {
+  EN: 'en',
+  DE: 'de',
+  FR: 'fr',
+  KO: 'ko',
+  ES: 'es',
+  IT: 'it',
+  JP: 'jp',
+  BR: 'br',
+};
+
+const LANG_LOC = {
+  en: 'en-US',
+  de: 'de-DE',
+  fr: 'fr-FR',
+  ko: 'ko-KR',
+  es: 'es-ES', // es-MX?
+  it: 'it-IT',
+  jp: 'ja-JP',
+  br: 'pt-BR',
+};
+
+let language;
+
+export function getLanguage() {
+  if (language) return language;
+  language = LANG.EN;
+  const segs = window.location.pathname.split('/');
+  if (segs && segs.length > 0) {
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [, value] of Object.entries(LANG)) {
+      if (value === segs[1]) {
+        language = value;
+        break;
+      }
+    }
+  }
+  return language;
+}
+
+/**
+ * Returns the language dependent root path
+ * @returns {string} The computed root path
+ */
+export function getRootPath() {
+  const loc = getLanguage();
+  if (loc === LANG.EN) {
+    return '';
+  }
+  return `/${loc}/`;
+}
+
 /**
  * Retrieves the content of a metadata tag.
  * @param {string} name The metadata name (or property)
@@ -288,6 +376,24 @@ export function addFavIcon(href) {
 }
 
 /**
+ * fetches the string variables.
+ * @returns {object} localized variables
+ */
+
+export async function fetchPlaceholders() {
+  if (!window.placeholders) {
+    const resp = await fetch(`${getRootPath()}/placeholders.json`);
+    const json = await resp.json();
+    window.placeholders = {};
+    json.data.forEach((placeholder) => {
+      window.placeholders[placeholder.Key] = placeholder.Text;
+    });
+  }
+  return window.placeholders;
+}
+
+
+/**
  * load LCP block and/or wait for LCP in default content.
  */
 async function waitForLCP() {
@@ -469,8 +575,7 @@ async function loadLazy(doc) {
     loadBlocks(main);
 
     decorateBlock(header);
-    const gnavPath = getMetadata('gnav') || `/blocks/gnav`;
-    header.setAttribute('data-block-name', 'gnav');
+    const gnavPath = getMetadata('gnav') || `/gnav-kitchen-sink`;
     header.setAttribute('data-gnav-source', gnavPath);
     loadBlock(header);
 
