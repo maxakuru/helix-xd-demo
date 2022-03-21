@@ -269,6 +269,62 @@ export function updateSectionsStatus($main) {
 }
 
 /**
+ * Loads JS and CSS for a theme.
+ * @param {Element} $block The block element
+ */
+const config = {
+  themes: {
+    tutorial: {
+      class: 'adobe-theme',
+      location: '/themes/adobe/',
+      styles: 'adobe.css',
+    },
+    ccx: {
+      class: 'ccx-theme',
+      location: '/themes/ccx/',
+      styles: 'ccx.css',
+    },
+    nike: {
+      class: 'nike-theme',
+      location: '/themes/nike/',
+      styles: 'nike.css',
+    },
+    servicenow: {
+      class: 'servicenow-theme',
+      location: '/themes/servicenow/',
+      styles: 'servicenow.css',
+    },
+    styleguide: {
+      class: 'styleguide-theme',
+      location: '/themes/styleguide/',
+      styles: 'styleguide.css',
+    },
+  },
+};
+
+const loadTheme = (config) => {
+  const theme = getMetadata('theme');
+  const isLoaded = () => {
+    document.body.classList.add('is-Loaded');
+  };
+  if (theme) {
+    const themeConf = config.themes[theme] || {};
+    if (themeConf.class) {
+      document.body.classList.add(themeConf.class);
+    }
+    if (themeConf.styles) {
+      loadStyle(`${themeConf.location}${themeConf.styles}`, isLoaded);
+    } else {
+      isLoaded();
+    }
+  } else {
+    isLoaded();
+  }
+};
+
+
+
+/**
  * Decorates all blocks in a container element.
  * @param {Element} $main The container element
  */
@@ -572,6 +628,7 @@ async function loadLazy(doc) {
   const main = document.querySelector('main');
 
   if (main) {
+    loadTheme(config);
     loadBlocks(main);
 
     decorateBlock(header);

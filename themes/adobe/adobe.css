@@ -1,0 +1,12 @@
+/* Theme CCX */
+
+:root {
+  --color-accent: #1473E6;
+  --color-gray: #E5E5E5;
+  --color-dark: #000000;
+  --font-family: 'adobe-clean';
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-accent);
+}

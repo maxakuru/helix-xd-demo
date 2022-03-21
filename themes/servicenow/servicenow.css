@@ -1,0 +1,12 @@
+/* Theme ServiceNow */
+
+:root {
+   --color-accent: #62D84E;
+  --color-gray: #E5E5E5;
+   --color-dark: #032D42;
+   --font-family: 'adobe-clean';
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-accent);
+}

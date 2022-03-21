@@ -1,0 +1,11 @@
+/* Theme Nike */
+:root {
+  --color-accent: #FF6600;
+  --color-gray: #E5E5E5;
+  --color-dark: #111111;
+  --font-family: 'adobe-clean';
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-accent);
+}
