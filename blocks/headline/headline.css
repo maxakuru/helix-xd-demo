@@ -3,7 +3,8 @@
     position: relative;
 }
 .headline .container > div {
-    max-width: 600px;
+  max-width: var(--grid-container-width);
+  margin: 0 auto;
 }
 .headline.center .container > div {
     margin: 0 auto;

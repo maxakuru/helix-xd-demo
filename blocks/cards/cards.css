@@ -41,7 +41,6 @@
   position: relative;
 }
 
-
 .cards .background picture {
     display: block;
     position: absolute;
@@ -51,6 +50,7 @@
     bottom: 0;
 }
 
+.cards .card img,
 .cards .background img {
     object-fit: cover;
     height: 100%;
@@ -71,6 +71,7 @@
   background: white;
   color: black;
   padding: 16px;
+  box-shadow: 0 0 4px 0px rgb(0 0 0 / 20%);
 }
 .cards .card .featured-image {
   margin: -16px -16px 0;
@@ -79,20 +80,19 @@
 .cards .card img {
   max-width: 100%;
 }
-.cards .text .detail-M {
+.cards .card .detail-M {
     margin-bottom: 16px;
 }
 
-.cards .text .heading-XL {
+.cards .card .heading-XL {
     margin-bottom: 16px;
 }
 
-.cards .text .body-M {
+.cards .card .body-M {
     margin-bottom: 24px;
 }
-
-.cards .text img {
-    max-height: 56px;
+.cards .card .body-S {
+  color: #505050;
 }
 
 .cards .text .action-area {

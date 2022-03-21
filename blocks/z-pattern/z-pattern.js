@@ -82,6 +82,7 @@ function getBlockSize(el) {
 }
 
 export default function init(block)  {
+    block.classList.add('container');
     const h1 = block.querySelector('h1');
     if (h1) {
         h1.parentElement.parentElement.classList.add('z-pattern-heading');

@@ -1,14 +1,20 @@
 
 :root {
-  --grid-container-width-s: 800px;
-  --grid-container-width-m: 1000px;
-  --grid-container-width-l: 1200px;
+  --grid-container-width-s: 83.4%;;
+  --grid-container-width-m: 83.4%;;
+  --grid-container-width-l: 83.4%;;
+}
+
+@media screen and (min-width: 1440px) {
+  :root {
+    --grid-container-width-s: 800px;
+    --grid-container-width-m: 1000px;
+    --grid-container-width-l: 1200px;
+  }
 }
 
 .z-pattern {
     padding: var(--spacing-xxl) 0;
-    max-width: var(--grid-container-width);
-    margin: 0 auto;
 }
 
 .z-pattern > div {
@@ -25,25 +31,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap:  var(--spacing-m);
-    margin-bottom: var(--spacing-m);
+    gap:  var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
     flex-direction: column;
 }
-
-
-.z-pattern > div[class^="z-row"] > div {
-    flex: 0 0 40%;
-}
-
-.z-pattern > div[class^="z-row"] > div {
-    max-width: 500px;
-}
-
-.z-pattern > div[class^="z-row"] > div:first-of-type {
-    margin-right: var(--spacing-m);
-}
-
-
 
 .z-pattern .text .detail-S {
   margin-bottom: 8px;
@@ -127,5 +118,14 @@
   }
   .z-pattern.large {
     max-width: var(--grid-container-width-l);
+  }
+  .z-pattern > div[class^="z-row"] > div {
+    flex: auto;
+  }
+  .z-pattern > div[class^="z-row"] > div.image {
+    width: 60%;
+  }
+  .z-pattern > div[class^="z-row"] > div.text {
+    width: 40%;
   }
 }

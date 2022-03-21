@@ -47,7 +47,7 @@ function decorateText(el) {
       heading.nextElementSibling.classList.add('body-S');
     }
     if (heading.previousElementSibling) {
-      heading.previousElementSibling.classList.add('detail-M');
+      heading.previousElementSibling.classList.add('body-S');
     }
   })
 }
