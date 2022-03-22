@@ -18,7 +18,7 @@ function decorateButtons(el) {
   const buttons = el.querySelectorAll('em a, strong a');
   buttons.forEach((button) => {
     const parent = button.parentElement;
-    const buttonType = parent.nodeName === 'STRONG' ? 'blue' : 'outline';
+    const buttonType = parent.nodeName === 'STRONG' ? 'accent' : 'outline';
     button.classList.add('con-button', buttonType);
     parent.insertAdjacentElement('afterend', button);
     parent.remove();

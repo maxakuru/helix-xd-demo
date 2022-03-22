@@ -274,7 +274,7 @@ export function updateSectionsStatus($main) {
  */
 const config = {
   themes: {
-    tutorial: {
+    adobe: {
       class: 'adobe-theme',
       location: '/themes/adobe/',
       styles: 'adobe.css',

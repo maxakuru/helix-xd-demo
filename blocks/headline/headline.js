@@ -1,10 +1,20 @@
 const init = (element) => {
-    const header = document.querySelector('.headline');
 
-    const container = element.querySelector(':scope > div');
+    const children = element.querySelectorAll(':scope > div');
+    const background = children[0];
+
+    background.classList.add('background');
+    const bgHasImg = background.querySelector(':scope img');
+    if (!bgHasImg) {
+      const bgColor = background.textContent;
+      element.style.background = bgColor;
+      children[0].remove();
+    }
+
+    const container = children[1];
     container.classList.add('container');
 
-    const ribbon = element.querySelector(':scope > div:last-of-type > div');
+    const ribbon = children[children.length - 1];
     ribbon.classList.add('ribbon');
     const bgImg = ribbon.querySelector(':scope img');
     if (!bgImg) {
