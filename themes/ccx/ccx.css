@@ -1,12 +1,24 @@
 /* Theme CCX */
 
-:root {
-   --color-accent: #5C5CE0;
-   --color-gray: #E5E5E5;
-   --color-dark: #242424;
-   --font-family: 'adobe-clean';
+:root .ccx-theme {
+   --theme-color-accent: #5C5CE0;
+   --theme-color-gray: #E5E5E5;
+   --theme-color-dark: #242424;
+   --theme-font-family: 'helvetica';
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: var(--color-accent);
+  /*color: var(--color-accent);*/
 }
+
+.ccx-theme .marquee.large .con-button.accent {
+  font-size: 24px;
+  line-height: 24px;
+  padding: 12px 24px;
+  width: auto;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+}
+
+
