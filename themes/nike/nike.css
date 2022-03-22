@@ -5,14 +5,22 @@
     --theme-color-light: #ffffff;
     --theme-color-gray: #E5E5E5;
     --theme-color-dark: #111111;
-    --theme-font-family: 'helvetica neue', 'helvetica', sans-serif;
+    --theme-font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    --theme-font-family-alt: 'Futura', Futura, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
   /*color: var(--theme-color-accent);*/
+  font-family: var(--theme-font-family-alt);
 }
 
 body {
   /*font-family: var(--theme-font-family);*/
 }
 
+
+.nike-theme .headline h2 {
+  font-size: 54px;
+  font-weight: 900;
+  line-height: 1em;
+}

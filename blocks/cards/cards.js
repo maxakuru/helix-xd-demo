@@ -57,6 +57,12 @@ export default function init(el) {
   const foreground = children[children.length - 1];
   if (children.length > 1) {
     children[0].classList.add('background');
+    const bgHasImg = children[0].querySelector(':scope img');
+    if (!bgHasImg) {
+      const bgColor = children[0].textContent;
+      el.style.background = bgColor;
+      children[0].remove();
+    }
   }
   if (children.length > 2) {
     children[1].classList.add('card-header', 'container');
