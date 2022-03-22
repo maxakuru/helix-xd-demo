@@ -22,3 +22,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+.ccx-theme .headline .con-button.outline {
+  background: var(--theme-color-light);
+  border: var(--theme-color-light)
+}
+.ccx-theme .headline .con-button.outline:hover {
+  color: var(--theme-color-dark);
+}

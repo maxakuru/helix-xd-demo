@@ -1,11 +1,17 @@
 .headline {
     padding: 100px 0;
     position: relative;
+    color: var(--theme-color-light)
 }
 .headline .container > div {
   max-width: var(--grid-container-width);
   margin: 0 auto;
 }
+
+.headline.light {
+  color: var(--theme-color-dark)
+}
+
 .headline.center .container > div {
     margin: 0 auto;
 }
