@@ -660,23 +660,40 @@ button.gnav-toggle:after {
     top: 100%;
   }
 }
-.demo-menu {
-  margin: 0 auto;
-  max-width: 1440px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.demo-menu .menu > div > div,
-.profile > div > div{
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-}
 
 @media (min-width: 1440px) {
   .gnav, .gnav-search-field, .gnav-search-results {
     max-width: 1440px;
   }
+}
+
+/* DEMO MENU */
+
+.demo-menu > div{
+  margin: 0 auto;
+  max-width: 1440px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+}
+
+.demo-menu p{
+  margin: 0;
+  padding: 0;
+}
+
+.demo-menu .brand img {
+  height: 24px;
+}
+
+.demo-menu .search svg {
+  height: 24px;
+}
+
+.menu > div > div,
+.profile > div > div{
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
 }
