@@ -18,7 +18,7 @@ h6 {
 }
 
 body {
-  /*font-family: var(--theme-font-family);*/
+  font-family: var(--theme-font-family);
 }
 
 .servicenow-theme .headline h2 {
@@ -70,4 +70,11 @@ body {
   background-color: transparent;
   border-color: white;
   color: white;
+}
+
+.servicenow-theme .con-button.accent:hover,
+.servicenow-theme .z-pattern .con-button.accent:hover,
+.servicenow-theme .headline .con-button.accent:hover {
+  background-color: var(--theme-color-accent);
+  text-decoration: none;
 }
