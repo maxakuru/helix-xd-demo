@@ -528,6 +528,22 @@ export function setSVG(anchor) {
   }
 }
 
+export function decorateMenu(parent) {
+  const anchors = parent.getElementsByTagName('a');
+  parent.classList.add('demo-menu');
+  const children = parent.querySelectorAll(':scope > div')
+  children[0].classList.add('logo');
+  children[1].classList.add('links');
+  children[2].classList.add('login');
+
+  return Array.from(anchors).map((anchor) => {
+    makeRelative(anchor);
+    setSVG(anchor);
+    return anchor;
+  });
+}
+
+
 export function decorateAnchors(parent) {
   const anchors = parent.getElementsByTagName('a');
   return Array.from(anchors).map((anchor) => {

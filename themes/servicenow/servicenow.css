@@ -5,7 +5,7 @@
   --theme-color-gray: #e5e5e5;
   --theme-color-dark: #032d42;
   --theme-font-family: "Gilroy", Helvetica, sans-serif;
-  --theme-font-family-alt: "Helvetica", Helvetica, sans-serif;
+  --theme-font-family-alt: "Gilroy", Helvetica, sans-serif;
 }
 
 h1,
@@ -22,8 +22,8 @@ body {
 }
 
 .servicenow-theme .headline h2 {
-  font-size: 54px;
-  font-weight: 900;
+  font-size: 36px;
+  font-weight: 700;
   line-height: 1em;
   color: white;
 }

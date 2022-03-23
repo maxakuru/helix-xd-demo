@@ -5,6 +5,7 @@ import {
   getMetadata,
   cleanVariations,
   decorateAnchors,
+  decorateMenu,
   loadStyle,
 } from '../../scripts/scripts.js';
 import createTag from './gnav-utils.js';
@@ -423,9 +424,26 @@ async function fetchGnav(url) {
 }
 
 export default async function init(blockEl) {
-  const url = makeLinkRelative(getMetadata('gnav')) || '/gnav';
+  const gnavMeta = getMetadata('gnav');
+  const menuMeta = getMetadata('menu');
+  const navURL = gnavMeta || menuMeta;
+  const url = makeLinkRelative(navURL) || '/gnav';
   const html = await fetchGnav(url);
-  if (html) {
+
+  if (menuMeta && html){
+    try {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      cleanVariations(doc);
+      decorateAnchors(doc);
+      const innerDiv =  blockEl.querySelector(':scope > div');
+      innerDiv.innerHTML = doc.body.innerHTML;
+      decorateMenu(innerDiv);
+    } catch (e) {
+      console.log('Could not create menu navigation', e);
+    }
+  }
+  else if (gnavMeta && html) {
     try {
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
