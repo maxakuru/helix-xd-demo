@@ -4,19 +4,20 @@ header .gnav {
 
 .gnav-wrapper {
   position: relative;
-  background: #FFF;
+  background: #fff;
   width: 100%;
   height: 64px;
-  border-bottom: 1px solid #EAEAEA;
+  border-bottom: 1px solid #eaeaea;
   display: flex;
 }
 
 .gnav {
   visibility: unset;
   display: grid;
-  grid-template-areas: 'toggle  brand   profile'
-                       'search  search  search'
-                       'navlist navlist navlist';
+  grid-template-areas:
+    "toggle  brand   profile"
+    "search  search  search"
+    "navlist navlist navlist";
   grid-template-columns: 64px 1fr auto;
   grid-template-rows: 64px auto 1fr;
   margin: 0 auto;
@@ -40,7 +41,7 @@ header .gnav {
 
 .gnav strong a {
   font-weight: 700;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   justify-content: center;
   padding: 0 20px;
@@ -48,7 +49,7 @@ header .gnav {
 }
 
 .gnav strong a:hover {
-  color: #FFF;
+  color: #fff;
   background-color: #0d66d0;
   border-color: #0d66d0;
 }
@@ -109,7 +110,7 @@ button.gnav-toggle:after {
   margin: 0;
   padding: 0;
   list-style: none;
-  background: #FFF;
+  background: #fff;
   width: calc(100% - 20px);
 }
 
@@ -127,8 +128,8 @@ button.gnav-toggle:after {
   justify-content: space-between;
   align-items: center;
   padding: 20px 20px;
-  color: #4B4B4B;
-  transition: background-color .1s ease;
+  color: #4b4b4b;
+  transition: background-color 0.1s ease;
 }
 
 .gnav-navitem > a {
@@ -136,7 +137,7 @@ button.gnav-toggle:after {
 }
 
 .gnav-navitem > a:hover {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
 .gnav-navitem.has-Menu > a:after {
@@ -151,8 +152,8 @@ button.gnav-toggle:after {
   border-color: #2c2c2c;
   transform-origin: 75% 75%;
   transform: rotate(45deg);
-  transition: transform .1s ease;
-  content: '';
+  transition: transform 0.1s ease;
+  content: "";
   margin-left: 5px;
   margin-right: 3px;
 }
@@ -165,7 +166,7 @@ button.gnav-toggle:after {
   bottom: 0;
   left: 0;
   display: block;
-  content: '';
+  content: "";
   z-index: 1;
 }
 
@@ -176,7 +177,7 @@ button.gnav-toggle:after {
 .gnav-navitem-menu {
   display: none;
   padding: 14px 0;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
 .gnav-navitem.has-Menu.is-Open .gnav-navitem-menu {
@@ -194,17 +195,17 @@ button.gnav-toggle:after {
   font-weight: 700;
   position: relative;
   border-bottom: none;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
 .gnav-navitem.has-Menu.is-Open > a:before {
-  content: '';
+  content: "";
   position: absolute;
   left: 20px;
   right: 20px;
   bottom: 0;
   display: block;
-  border-bottom: 1px solid #D1D1D1;
+  border-bottom: 1px solid #d1d1d1;
 }
 
 .gnav-navitem-menu a {
@@ -213,8 +214,8 @@ button.gnav-toggle:after {
 }
 
 .gnav-navitem-menu a:hover {
-  color: #1473E6;
-  background-color: #F5F5F5;
+  color: #1473e6;
+  background-color: #f5f5f5;
 }
 
 .gnav-promo {
@@ -282,8 +283,8 @@ button.gnav-toggle:after {
 
 .gnav-search-bar {
   display: none;
-  background: #FFF;
-  border-bottom: 1px solid #EAEAEA;
+  background: #fff;
+  border-bottom: 1px solid #eaeaea;
   padding-bottom: 20px;
 }
 
@@ -293,7 +294,7 @@ button.gnav-toggle:after {
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0, 0, 0, 0.75);
   -webkit-backdrop-filter: blur(1em);
   backdrop-filter: blur(1em);
 }
@@ -335,7 +336,7 @@ button.gnav-toggle:after {
   border-radius: 4px;
   padding: 0 30px;
   font-size: 14px;
-  font-family: 'adobe-clean';
+  font-family: "adobe-clean";
   outline: none !important;
   -webkit-appearance: none;
   box-sizing: border-box;
@@ -393,7 +394,7 @@ button.gnav-toggle:after {
 }
 
 .gnav-search-highlight:after {
-  content: '';
+  content: "";
   position: absolute;
   z-index: -1;
   top: 0;
@@ -443,8 +444,8 @@ button.gnav-toggle:after {
   right: 0;
   top: 64px;
   min-width: 320px;
-  background: #FFF;
-  border: 1px solid #E1E1E1;
+  background: #fff;
+  border: 1px solid #e1e1e1;
   border-radius: 0 0 4px 4px;
   overflow: hidden;
 }
@@ -506,18 +507,18 @@ button.gnav-toggle:after {
 .gnav-profile-actions a {
   padding: 14px 20px;
   display: block;
-  border-top: 1px solid #E1E1E1;
+  border-top: 1px solid #e1e1e1;
   box-sizing: border-box;
   color: #4b4b4b;
 }
 
 .gnav-profile-menu a:hover {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
 }
 
 @media (min-width: 1200px) {
   .gnav {
-    grid-template-areas: 'brand navlist search profile logo';
+    grid-template-areas: "brand navlist search profile logo";
     grid-template-columns: auto 1fr auto auto auto;
     grid-template-rows: unset;
     padding: 0 12px 0 0;
@@ -546,7 +547,7 @@ button.gnav-toggle:after {
   }
 
   .gnav .gnav-mainnav {
-    width: unset
+    width: unset;
   }
 
   .gnav-navitem-menu a {
@@ -573,8 +574,8 @@ button.gnav-toggle:after {
   }
 
   .gnav-navitem.section {
-    border-left: 1px solid #EBEBEB;
-    border-right: 1px solid #EBEBEB;
+    border-left: 1px solid #ebebeb;
+    border-right: 1px solid #ebebeb;
   }
 
   .gnav-navitem a {
@@ -603,7 +604,7 @@ button.gnav-toggle:after {
     display: grid;
     position: absolute;
     top: 100%;
-    border-top: 1px solid #EAEAEA;
+    border-top: 1px solid #eaeaea;
     box-shadow: 0px 3px 3px rgb(0 0 0 / 20%);
   }
 
@@ -662,14 +663,16 @@ button.gnav-toggle:after {
 }
 
 @media (min-width: 1440px) {
-  .gnav, .gnav-search-field, .gnav-search-results {
+  .gnav,
+  .gnav-search-field,
+  .gnav-search-results {
     max-width: 1440px;
   }
 }
 
 /* DEMO MENU */
 
-.demo-menu > div{
+.demo-menu > div {
   margin: 0 auto;
   max-width: 1440px;
   display: flex;
@@ -678,25 +681,29 @@ button.gnav-toggle:after {
   height: 48px;
 }
 
-.demo-menu p{
+.demo-menu p {
   margin: 0;
   padding: 0;
 }
 
 .demo-menu .brand img {
   height: 24px;
+  position: relative;
+  top: 3px;
 }
 
 .demo-menu .search svg {
   height: 24px;
+  position: relative;
+  top: 3px;
 }
 
-
 .menu > div > div,
-.profile > div > div{
+.profile > div > div {
   display: flex;
   justify-content: space-between;
   gap: 12px;
+  align-items: center;
 }
 
 .menu {

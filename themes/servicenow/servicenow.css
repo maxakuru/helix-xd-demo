@@ -6,6 +6,7 @@
   --theme-color-dark: #032d42;
   --theme-font-family: "Gilroy", Helvetica, sans-serif;
   --theme-font-family-alt: "Gilroy", Helvetica, sans-serif;
+  --body-font-size-xxs: 14px;
 }
 
 h1,
@@ -15,6 +16,12 @@ h4,
 h5,
 h6 {
   font-family: var(--theme-font-family-alt);
+}
+
+header .demo-menu {
+  padding: 0 5px;
+  font-weight: 200;  
+  font-size: 14px;
 }
 
 body {

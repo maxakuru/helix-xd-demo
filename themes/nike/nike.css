@@ -1,23 +1,37 @@
 /* Theme Nike */
 :root .nike-theme {
-    /*--theme-color-accent: #FF6600;*/
-    --theme-color-accent: #111111;
-    --theme-color-light: #ffffff;
-    --theme-color-gray: #E5E5E5;
-    --theme-color-dark: #111111;
-    --theme-font-family: 'Helvetica Neue', Helvetica, sans-serif;
-    --theme-font-family-alt: 'Futura', Futura, sans-serif;
+  /*--theme-color-accent: #FF6600;*/
+  --theme-color-accent: #111111;
+  --theme-color-light: #ffffff;
+  --theme-color-gray: #e5e5e5;
+  --theme-color-dark: #111111;
+  --theme-font-family: "Helvetica Neue", Helvetica, sans-serif;
+  --theme-font-family-alt: "Futura", Futura, sans-serif;
+  --body-font-size-xxs: 14px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  /*color: var(--theme-color-accent);*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--theme-font-family-alt);
 }
 
-body {
-  /*font-family: var(--theme-font-family);*/
+header .demo-menu {
+  padding: 0 5px;
+  font-weight: 400;
+  font-size: 14px;
 }
 
+.menu > div > div {
+  gap: 20px;
+}
+
+body {
+  font-family: var(--theme-font-family);
+}
 
 .nike-theme .headline h2 {
   font-size: 54px;
