@@ -691,9 +691,19 @@ button.gnav-toggle:after {
   height: 24px;
 }
 
+
 .menu > div > div,
 .profile > div > div{
   display: flex;
   justify-content: space-between;
   gap: 12px;
+}
+
+.menu {
+  display: none;
+}
+@media (min-width: 700px) {
+  .menu {
+    display: block;
+  }
 }
