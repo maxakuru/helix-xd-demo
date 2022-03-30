@@ -14,8 +14,6 @@
  * Z-Pattern - v0.0.1
  */
 
-function isOdd(num) { return num % 2 ? 'z-row-odd' : 'z-row-even'; }
-
 function decorateButtons(el) {
   const buttons = el.querySelectorAll('em a, strong a');
   buttons.forEach((button) => {
@@ -81,6 +79,8 @@ function getBlockSize(el) {
   }
 }
 
+function isOdd(num) { return num % 2 ? 'z-row-odd' : 'z-row-even'; }
+
 export default function init(block)  {
     block.classList.add('container');
     const h1 = block.querySelector('h1');
@@ -89,17 +89,35 @@ export default function init(block)  {
         h1.classList.add('heading-L');
     }
     const size = getBlockSize(block);
-    const zRows = block.querySelectorAll(':scope > div:not([class])');
-    zRows.forEach((row, idx) => {
-        row.classList.add(isOdd(idx));
-        const text = row.querySelector('h1, h2, h3, h4, h5, h6').closest('div');
-        text.classList.add('text');
-        const image = row.querySelector(':scope > div:not([class])');
-        if (image) {
-          image.classList.add('image');
-        }
-        decorateText(text, size);
-        // decorateIcons(text);
-        decorateButtons(text);
+    let zRows = block.querySelectorAll(':scope > div:not([class])');
+
+    // filter empty row
+    // get row count
+    const filter = Array.prototype.filter;
+    let rowCountContentFirst = 0;
+    filter.call( zRows, ( node ) => node.children.length > 0).forEach((row, idx) => {
+        const rowFirstChild = row.querySelector(':scope > div:first-child');
+        const rowFirstChildHeadline = rowFirstChild.querySelector('h1, h2, h3, h4, h5, h6');
+        if(rowFirstChildHeadline) rowCountContentFirst++;
+    });
+
+    zRows.forEach((row, i) => {
+
+      if(rowCountContentFirst === 0) {
+        row.classList.add(isOdd(i));
+      }else{
+        const rowFirstChild = row.querySelector(':scope > div:first-child');
+        const rowClass = rowFirstChild.querySelector('h1, h2, h3, h4, h5, h6') ? 'z-row-odd' : 'z-row-even';
+        row.classList.add(rowClass);
+      }
+      const text = row.querySelector('h1, h2, h3, h4, h5, h6').closest('div');
+      text.classList.add('text');
+      const image = row.querySelector(':scope > div:not([class])');
+      if (image) {
+        image.classList.add('image');
+      }
+      decorateText(text, size);
+      // decorateIcons(text);
+      decorateButtons(text);
     });
 }
