@@ -192,3 +192,14 @@ main a:visited {
   color: var(--theme-color-light);
   background: var(--theme-color-dark);
 }
+
+/* progressive section appearance */
+main div[data-section-status='loading'],
+main div[data-section-status='initialized'] {
+  display: none;
+}
+
+main div[data-section-status='loaded']{
+  display: block;
+}
+
