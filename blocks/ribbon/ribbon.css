@@ -1,7 +1,8 @@
 .ribbon {
     padding: 0;
     position: relative;
-    color: var(--theme-color-light)
+    color: var(--theme-color-light);
+    min-height: 10px;
 }
 .ribbon .container > div {
   max-width: var(--grid-container-width);
