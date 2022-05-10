@@ -427,7 +427,7 @@ export default async function init(blockEl) {
   const gnavMeta = getMetadata('gnav');
   const menuMeta = getMetadata('menu');
   const navURL = gnavMeta || menuMeta;
-  const url = makeLinkRelative(navURL) || '/gnav';
+  const url = navURL ? makeLinkRelative(navURL) : '/gnav';
   const html = await fetchGnav(url);
 
   if (menuMeta && html){
