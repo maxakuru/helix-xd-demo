@@ -441,12 +441,17 @@ export function addFavIcon(href) {
 
 export async function fetchPlaceholders() {
   if (!window.placeholders) {
-    const resp = await fetch(`${getRootPath()}/placeholders.json`);
-    const json = await resp.json();
     window.placeholders = {};
-    json.data.forEach((placeholder) => {
-      window.placeholders[placeholder.Key] = placeholder.Text;
-    });
+
+    try {
+      const resp = await fetch(`${getRootPath()}/placeholders.json`);
+      const json = await resp.json();
+      json.data.forEach((placeholder) => {
+        window.placeholders[placeholder.Key] = placeholder.Text;
+      });
+    } catch(e) {
+      console.warn('Failed to set placeholders: ', e);
+    }
   }
   return window.placeholders;
 }
