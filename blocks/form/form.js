@@ -99,7 +99,6 @@ async function queryForm(formOrEl, sheet) {
 }
 
 function createRating(fd) {
-  console.log('createRating: ', fd);
   const fieldsetWrapper = document.createElement('span');
   fieldsetWrapper.className = 'form-rating-set-wrapper';
 
