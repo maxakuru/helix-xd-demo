@@ -113,6 +113,17 @@ export function getEnv() {
   return env;
 }
 
+/**
+ * Sanitizes a name for use as class name.
+ * @param {*} name The unsanitized name
+ * @returns {string} The class name
+ */
+ export function toClassName(name) {
+  return name && typeof name === 'string'
+    ? name.toLowerCase().replace(/[^0-9a-z]/gi, '-')
+    : '';
+}
+
 export function makeLinkRelative(href) {
   const url = new URL(href);
   const host = url.hostname;
@@ -219,24 +230,63 @@ function wrapSections(sections) {
  * Decorates a block.
  * @param {Element} block The block element
  */
-export function decorateBlock(block) {
+ export function decorateBlock(block) {
   const trimDashes = (str) => str.replace(/(^\s*-)|(-\s*$)/g, '');
   const classes = Array.from(block.classList.values());
   const blockName = classes[0];
   if (!blockName) return;
-  const section = block.closest('.section-wrapper');
+  const section = block.closest('.section');
   if (section) {
     section.classList.add(`${blockName}-container`.replace(/--/g, '-'));
   }
-  const variantBlocks = blockName.split('--');
-  const shortBlockName = trimDashes(variantBlocks.shift());
-  const variants = variantBlocks.map((v) => trimDashes(v));
+  const blockWithVariants = blockName.split('--');
+  const shortBlockName = trimDashes(blockWithVariants.shift());
+  const variants = blockWithVariants.map((v) => trimDashes(v));
   block.classList.add(shortBlockName);
   block.classList.add(...variants);
 
   block.classList.add('block');
   block.setAttribute('data-block-name', shortBlockName);
   block.setAttribute('data-block-status', 'initialized');
+
+  const blockWrapper = block.parentElement;
+  blockWrapper.classList.add(`${shortBlockName}-wrapper`);
+}
+
+/**
+ * Extracts the config from a block.
+ * @param {Element} block The block element
+ * @returns {object} The block config
+ */
+ export function readBlockConfig(block) {
+  const config = {};
+  block.querySelectorAll(':scope>div').forEach((row) => {
+    if (row.children) {
+      const cols = [...row.children];
+      if (cols[1]) {
+        const col = cols[1];
+        const name = toClassName(cols[0].textContent);
+        let value = '';
+        if (col.querySelector('a')) {
+          const as = [...col.querySelectorAll('a')];
+          if (as.length === 1) {
+            value = as[0].href;
+          } else {
+            value = as.map((a) => a.href);
+          }
+        } else if (col.querySelector('p')) {
+          const ps = [...col.querySelectorAll('p')];
+          if (ps.length === 1) {
+            value = ps[0].textContent;
+          } else {
+            value = ps.map((p) => p.textContent);
+          }
+        } else value = row.children[1].textContent;
+        config[name] = value;
+      }
+    }
+  });
+  return config;
 }
 
 /**
@@ -278,8 +328,8 @@ export function decorateSections($main) {
  * Updates all section status in a container element.
  * @param {Element} $main The container element
  */
-export function updateSectionsStatus($main) {
-  const sections = [...$main.querySelectorAll(':scope > div.section-wrapper')];
+ export function updateSectionsStatus($main) {
+  const sections = [...$main.querySelectorAll(':scope > div.section')];
   for (let i = 0; i < sections.length; i += 1) {
     const section = sections[i];
     const status = section.getAttribute('data-section-status');
@@ -305,6 +355,11 @@ const config = {
       class: 'adobe-theme',
       location: '/themes/adobe/',
       styles: 'adobe.css',
+    },
+    helix: {
+      class: 'helix-theme',
+      location: '/themes/helix/',
+      styles: 'helix.css',
     },
     ccx: {
       class: 'ccx-theme',
@@ -355,9 +410,9 @@ const loadTheme = (config) => {
  * Decorates all blocks in a container element.
  * @param {Element} $main The container element
  */
-export function decorateBlocks($main) {
+ export function decorateBlocks($main) {
   $main
-    .querySelectorAll('div.section-wrapper > div div')
+    .querySelectorAll('div.section > div div')
     .forEach(($block) => decorateBlock($block));
 }
 
@@ -366,7 +421,7 @@ export function decorateBlocks($main) {
  * @param {string} blockName name of the block
  * @param {any} content two dimensional array or string or object of content
  */
-function buildBlock(blockName, content) {
+ export function buildBlock(blockName, content) {
   const table = Array.isArray(content) ? content : [[content]];
   const blockEl = document.createElement('div');
   // build image block nested div structure
