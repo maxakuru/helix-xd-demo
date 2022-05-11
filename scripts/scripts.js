@@ -247,6 +247,18 @@ export function decorateSections($main) {
   wrapSections($main.querySelectorAll(':scope > div'));
   $main.querySelectorAll(':scope > div.section-wrapper').forEach((section) => {
     section.setAttribute('data-section-status', 'initialized');
+
+    /* process section metadata */
+    const sectionMeta = section.querySelector('div.section-metadata');
+    if (sectionMeta) {
+      const meta = readBlockConfig(sectionMeta);
+      const keys = Object.keys(meta);
+      keys.forEach((key) => {
+        if (key === 'style') section.classList.add(toClassName(meta.style));
+        else section.dataset[key] = meta[key];
+      });
+      sectionMeta.remove();
+    }
   });
 }
 
