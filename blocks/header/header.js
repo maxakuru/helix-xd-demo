@@ -443,7 +443,7 @@ export default async function init(blockEl) {
       console.log('Could not create menu navigation', e);
     }
   }
-  else if (gnavMeta && html) {
+  else if (html) {
     try {
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
@@ -452,7 +452,7 @@ export default async function init(blockEl) {
       const gnav = new Gnav(doc.body, blockEl);
       gnav.init();
     } catch (e) {
-      console.log('Could not great global navigation', e);
+      console.log('Could not create global navigation', e);
     }
-  }
+  } 
 }
