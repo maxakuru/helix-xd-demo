@@ -182,6 +182,7 @@ button.gnav-toggle:after {
 
 .gnav-navitem.has-Menu.is-Open .gnav-navitem-menu {
   display: block;
+  z-index: 999;
 }
 
 .gnav-navitem-menu ul {
