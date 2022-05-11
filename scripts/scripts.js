@@ -244,8 +244,20 @@ export function decorateBlock(block) {
  * @param {Element} $main The container element
  */
 export function decorateSections($main) {
-  wrapSections($main.querySelectorAll(':scope > div'));
-  $main.querySelectorAll(':scope > div.section-wrapper').forEach((section) => {
+  $main.querySelectorAll(':scope > div').forEach((section) => {
+    const wrappers = [];
+    let defaultContent = false;
+    [...section.children].forEach((e) => {
+      if (e.tagName === 'DIV' || !defaultContent) {
+        const wrapper = document.createElement('div');
+        defaultContent = e.tagName !== 'DIV';
+        if (defaultContent) wrapper.className = 'default-content-wrapper';
+        wrappers.push(wrapper);
+      }
+      wrappers[wrappers.length - 1].append(e);
+    });
+    wrappers.forEach((wrapper) => section.append(wrapper));
+    section.classList.add('section');
     section.setAttribute('data-section-status', 'initialized');
 
     /* process section metadata */
