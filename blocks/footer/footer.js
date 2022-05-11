@@ -176,7 +176,7 @@ class Footer {
 
     const links = copyrightEl.parentElement.querySelectorAll('a');
     if (!links) return null;
-    
+
     // build privacy wrapper
     const privacyWrapper = createTag('div', { class: 'footer-privacy' });
     // build privacy copyright text
