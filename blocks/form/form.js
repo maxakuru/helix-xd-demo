@@ -188,6 +188,33 @@ function createTextArea(fd) {
   return input;
 }
 
+function unflattenObject(o) {
+  if(!o || typeof o !== 'object') {
+    return o;
+  }
+
+  o = JSON.parse(JSON.stringify(o));
+  for(const [k, v] of Object.entries(o)) {
+    const spl = k.split('.');
+    let obj = o;
+    while(spl.length > 1) {
+      const key = spl.shift();
+      if(!spl.length) {
+        obj[key] = v;
+        break;
+      }
+      if(obj[key] == null) {
+        obj[key] = {};
+      }
+      if(typeof obj[key] !== 'object') {
+        break;
+      }
+      obj = obj[key];
+    } 
+  }
+  return o;
+}
+
 function createLabel(fd) {
   const label = document.createElement('label');
   label.setAttribute('for', fd.id);
@@ -228,6 +255,7 @@ async function createForm(formURL) {
   // eslint-disable-next-line prefer-destructuring
   form.dataset.action = pathname.split('.json')[0];
   json.data.forEach((fd) => {
+    fd = unflattenObject(fd);
     fd.inputType = fd.inputType || 'text';
     const fieldWrapper = document.createElement('div');
     const style = fd.viewType ? ` form-${fd.viewType}` : '';
