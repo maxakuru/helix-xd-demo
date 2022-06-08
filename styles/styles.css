@@ -79,6 +79,7 @@ body {
     margin: 0 auto;
 }
 
+
 /* Typography */
 .heading-XS {
   font-size: var(--type-heading-xs-size);
