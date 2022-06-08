@@ -56,14 +56,15 @@ export default function init(el) {
     if(background.children[0].innerText) {
       background.classList.add('fill');
       const fillStr = background.children[0].innerText;
+      console.log('fillStr: ', fillStr);
       background.removeChild(background.children[0]);
 
       const fillPic = createTag('picture');
       background.appendChild(fillPic);
 
       const fill = createTag('img');
-      fill.style.backgroundImage = fillStr;
       fillPic.appendChild(fill);
+      fill.style.background = fillStr;
     }
   }
   foreground.classList.add('foreground', 'container');
