@@ -10,6 +10,8 @@
  * governing permissions and limitations under the License.
  */
 
+import createTag from "../header/gnav-utils.js";
+
 /*
  * Marquee - v0.0.1
  */
@@ -38,11 +40,31 @@ function decorateText(el) {
   }
 }
 
+/**
+ * 
+ * @param {HTMLElement} el 
+ */
 export default function init(el) {
   const children = el.querySelectorAll(':scope > div');
   const foreground = children[children.length - 1];
   if (children.length > 1) {
-    children[0].classList.add('background');
+    /**
+     * @type {HTMLElement}
+     */
+    const background = children[0];
+    background.classList.add('background');
+    if(background.children[0].innerText) {
+      background.classList.add('fill');
+      const fillStr = background.children[0].innerText;
+      background.removeChild(background.children[0]);
+
+      const fillPic = createTag('picture');
+      background.appendChild(fillPic);
+
+      const fill = createTag('img');
+      fill.style.backgroundImage = fillStr;
+      fillPic.appendChild(fill);
+    }
   }
   foreground.classList.add('foreground', 'container');
   const text = foreground.querySelector('h1, h2, h3, h4, h5, h6').closest('div');
